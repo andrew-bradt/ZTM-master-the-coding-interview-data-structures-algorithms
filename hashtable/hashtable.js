@@ -21,7 +21,16 @@ class HashTable {
       this.data[address] = [];
     }
 
-    this.data[address].push([key, value]);
+    const bucket = this.data[address];
+
+    for (const entry of bucket) {
+      if (entry[0] === key) {
+        entry[1] = value;
+        return;
+      }
+    }
+
+    bucket.push([key, value]);
   }
 
   get(key) {
