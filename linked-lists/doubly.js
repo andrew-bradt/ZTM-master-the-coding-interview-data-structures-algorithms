@@ -56,7 +56,19 @@ class DoublyLinkedList {
   }
 
   insert(val, index) {
+    if (index <= 0) return this.prepend(val);
+    if (index >= this.length - 1) return this.append(val);
+    
+    const newNode = new Node(val);
+    const preInsertPointer = this._traverse(index - 1);
+    const postInsertPointer = preInsertPointer.next;
 
+    newNode.prev = preInsertPointer;
+    newNode.next = postInsertPointer;
+
+    preInsertPointer.next = newNode;
+    postInsertPointer.prev = newNode;
+    this.length++;
   }
 
   delete(index) {
@@ -128,6 +140,11 @@ list.append(94);
 list.append(1820);
 list.shift();
 list.pop();
+list.insert('andrew', 0);
+list.insert(false, 990);
+list.insert('new', 2);
 
-// 82, 12, 94
+// andrew, 82, new, 12, 94, false
 list.print();
+list.printReverse();
+console.log(list.length);
