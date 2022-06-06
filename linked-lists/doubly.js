@@ -46,6 +46,18 @@ class DoublyLinkedList {
 
     console.log(vals);
   }
+
+  printReverse() {
+    const vals = [];
+    let currentNode = this.tail;
+
+    while (currentNode) {
+      vals.push(currentNode.val);
+      currentNode = currentNode.prev;
+    }
+
+    console.log(vals);
+  }
 }
 
 const list = new DoublyLinkedList(12);
@@ -56,3 +68,4 @@ list.append(1820);
 
 // 800, 82, 12, 94, 1820
 list.print();
+list.printReverse();
