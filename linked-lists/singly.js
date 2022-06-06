@@ -21,6 +21,14 @@ class SinglyLinkedList {
     this.length++;
   }
 
+  shift() {
+    const deleted = this.head;
+    const newHead = deleted.next;
+    this.head = newHead;
+    this.length--;
+    return deleted;
+  }
+
   append(val) {
     const newNode = new Node(val);
     this.tail.next = newNode;
@@ -40,6 +48,10 @@ class SinglyLinkedList {
     preInsertPointer.next = newNode;
     this.length++;
   }
+
+  // remove(index) {
+  //   if (index <= 0) return this.shift();
+  // }
 
   print() {
     const vals = [];
@@ -76,8 +88,11 @@ list.insert(100, 0);
 list.insert(50, 100);
 list.insert(32, 2);
 list.insert('andrew', 3);
+list.shift();
+// 10, 32, andrew, 5, 16, 50
 
-// 100, 10, 32, andrew, 5, 16, 50
+
+
 
 list.print();
 
