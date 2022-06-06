@@ -1,5 +1,3 @@
-console.clear();
-
 class Node {
   constructor(val) {
     this.val = val;
@@ -71,8 +69,18 @@ class DoublyLinkedList {
     this.length++;
   }
 
-  delete(index) {
+  remove(index) {
+    if (index <= 0) return this.shift();
+    if (index >= this.length - 1 ) return this.pop();
 
+    const preRemovePointer = this._traverse(index - 1);
+    const deletedNode = preRemovePointer.next;
+    const postRemovePointer = deletedNode.next;
+
+    preRemovePointer.next = postRemovePointer;
+    postRemovePointer.prev = preRemovePointer;
+    this.length--;
+    return deletedNode.val;
   }
 
   print() {
@@ -143,8 +151,12 @@ list.pop();
 list.insert('andrew', 0);
 list.insert(false, 990);
 list.insert('new', 2);
+list.insert('some string', 4);
+list.remove(0);
+list.remove(5);
+list.remove(1);
 
-// andrew, 82, new, 12, 94, false
+// 82, 12, 'some string', 94
 list.print();
 list.printReverse();
 console.log(list.length);
