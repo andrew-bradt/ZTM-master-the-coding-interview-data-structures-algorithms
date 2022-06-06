@@ -26,7 +26,13 @@ class DoublyLinkedList {
   }
 
   shift() {
-
+    const deletedNode = this.head;
+    const newHead = deletedNode.next;
+    newHead.prev = null;
+    
+    this.head = newHead;
+    this.length--;
+    return deletedNode;
   }
 
   append(val) {
@@ -40,6 +46,20 @@ class DoublyLinkedList {
   }
 
   pop() {
+    const deletedNode = this.tail;
+    const newTail = deletedNode.prev;
+    newTail.next = null;
+    
+    this.tail = newTail;
+    this.length--;
+    return deletedNode;
+  }
+
+  insert(val, index) {
+
+  }
+
+  delete(index) {
 
   }
 
@@ -65,14 +85,6 @@ class DoublyLinkedList {
     }
 
     console.log(vals);
-  }
-
-  insert(val, index) {
-
-  }
-
-  delete(index) {
-
   }
 
   _traverse(index) {
@@ -114,6 +126,8 @@ list.prepend(82);
 list.prepend(800);
 list.append(94);
 list.append(1820);
+list.shift();
+list.pop();
 
-// 800, 82, 12, 94, 1820
+// 82, 12, 94
 list.print();
