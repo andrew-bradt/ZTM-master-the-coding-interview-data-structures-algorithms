@@ -1,5 +1,3 @@
-console.clear();
-
 class Node {
   constructor(val) {
     this.val = val;
@@ -36,6 +34,10 @@ class SinglyLinkedList {
     this.length++;
   }
 
+  pop() {
+    return this.remove(this.length - 1);
+  }
+
   insert(val, index) {
     if (index <= 0) return this.prepend(val);
     if (index >= this.length - 1) return this.append(val);
@@ -49,9 +51,18 @@ class SinglyLinkedList {
     this.length++;
   }
 
-  // remove(index) {
-  //   if (index <= 0) return this.shift();
-  // }
+  remove(index) {
+    if (index <= 0) return this.shift();
+    if (index > this.length - 1) return this.remove(this.length - 1);
+
+    const preRemovePointer = this._traverse(index - 1);
+    const deletedPointer = preRemovePointer.next;
+    const postRemovePointer = deletedPointer.next;
+
+    preRemovePointer.next = postRemovePointer;
+    this.length--;
+    return deletedPointer;
+  }
 
   print() {
     const vals = [];
@@ -76,7 +87,6 @@ class SinglyLinkedList {
 
     return currentNode;
   }
-
 }
 
 // Driver Code
@@ -89,10 +99,9 @@ list.insert(50, 100);
 list.insert(32, 2);
 list.insert('andrew', 3);
 list.shift();
-// 10, 32, andrew, 5, 16, 50
+list.remove(2);
+list.remove(5);
+list.pop();
 
-
-
-
-list.print();
-
+// 10, 32, 5
+list.print(); 
