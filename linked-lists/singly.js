@@ -27,17 +27,25 @@ class SinglyLinkedList {
     this.tail = newNode;
     this.length++;
   }
-  
+
+  print() {
+    const vals = [];
+    let currentNode = this.head;
+
+    while (currentNode) {
+      vals.push(currentNode.val);
+      currentNode = currentNode.next;
+    }
+
+    console.log(vals);
+  }
+
 }
 
 // Driver Code
 const list = new SinglyLinkedList(5);
+
 list.prepend(10);
 list.append(16);
 
-let pointer = list.head;
-
-while(pointer) {
-  console.log(pointer.val);
-  pointer = pointer.next;
-}
+list.print();
