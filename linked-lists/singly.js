@@ -1,3 +1,5 @@
+console.clear();
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -76,6 +78,24 @@ class SinglyLinkedList {
     console.log(vals);
   }
 
+  reverse() {
+    if (!this.head.next) return this.head;
+
+    let currentPointer = this.head;
+    let nextPointer = currentPointer.next;
+
+    while(nextPointer) {
+      const temp = nextPointer.next;
+      nextPointer.next = currentPointer;
+      currentPointer = nextPointer;
+      nextPointer = temp;
+    }
+
+    this.head.next = null;
+    this.tail = this.head;
+    this.head = currentPointer;
+  }
+
   _traverse(index) {
     let currentNode = this.head;
     let i = 0;
@@ -105,3 +125,7 @@ list.pop();
 
 // 10, 32, 5
 list.print(); 
+
+// 5, 32, 10
+list.reverse();
+list.print();
