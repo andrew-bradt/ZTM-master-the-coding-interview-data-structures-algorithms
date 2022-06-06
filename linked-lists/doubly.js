@@ -25,6 +25,10 @@ class DoublyLinkedList {
     this.length++;
   }
 
+  shift() {
+
+  }
+
   append(val) {
     const newNode = new Node(val);
 
@@ -33,6 +37,10 @@ class DoublyLinkedList {
 
     this.tail = newNode;
     this.length++;
+  }
+
+  pop() {
+
   }
 
   print() {
@@ -58,6 +66,47 @@ class DoublyLinkedList {
 
     console.log(vals);
   }
+
+  insert(val, index) {
+
+  }
+
+  delete(index) {
+
+  }
+
+  _traverse(index) {
+    const numStepsFromTail = this.length - 1 - index;
+    const numStepsFromHead = index;
+
+    return (numStepsFromHead <= numStepsFromTail) 
+      ? this._traverseFromHead(index) 
+      : this._traverseFromTail(index);
+  }
+  
+  _traverseFromHead(index) {
+    let currentNode = this.head;
+    let i = 0;
+
+    while(i !== index) {
+      currentNode = currentNode.next;
+      i++;
+    }
+
+    return currentNode;
+  }
+
+  _traverseFromTail(index) {
+    let currentNode = this.tail;
+    let i = this.length - 1;
+
+    while(i !== index) {
+      currentNode = currentNode.prev;
+      i--;
+    }
+
+    return currentNode;
+  }
 }
 
 const list = new DoublyLinkedList(12);
@@ -68,4 +117,3 @@ list.append(1820);
 
 // 800, 82, 12, 94, 1820
 list.print();
-list.printReverse();
