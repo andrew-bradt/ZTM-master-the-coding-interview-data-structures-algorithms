@@ -32,7 +32,7 @@ class DoublyLinkedList {
     
     this.head = newHead;
     this.length--;
-    return deletedNode;
+    return deletedNode.val;
   }
 
   append(val) {
@@ -52,7 +52,7 @@ class DoublyLinkedList {
     
     this.tail = newTail;
     this.length--;
-    return deletedNode;
+    return deletedNode.val;
   }
 
   insert(val, index) {

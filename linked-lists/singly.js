@@ -20,11 +20,11 @@ class SinglyLinkedList {
   }
 
   shift() {
-    const deleted = this.head;
-    const newHead = deleted.next;
+    const deletedPointer = this.head;
+    const newHead = deletedPointer.next;
     this.head = newHead;
     this.length--;
-    return deleted;
+    return deletedPointer.val;
   }
 
   append(val) {
@@ -61,7 +61,7 @@ class SinglyLinkedList {
 
     preRemovePointer.next = postRemovePointer;
     this.length--;
-    return deletedPointer;
+    return deletedPointer.val;
   }
 
   print() {
