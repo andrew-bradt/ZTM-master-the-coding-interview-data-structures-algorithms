@@ -15,9 +15,8 @@ const bubbleSort = (array) => {
   let firstIndex = 0;
   let secondIndex = 1;
   let lastSortedIndex = array.length;
-  let steps = 0;
+
   while (lastSortedIndex !== 1) {
-    steps++;
     if (secondIndex === lastSortedIndex) {
       firstIndex = 0;
       secondIndex = 1;
@@ -33,7 +32,7 @@ const bubbleSort = (array) => {
     firstIndex++;
     secondIndex++;
   }
-  console.log(steps);
+  
   return array;
 };
 
