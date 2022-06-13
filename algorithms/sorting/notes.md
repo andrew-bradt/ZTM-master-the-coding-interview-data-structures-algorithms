@@ -8,7 +8,7 @@
 - Merge Sort
 - Quick Sort
 
-# Notes About Each Sort
+# Elementary Sort Notes
 
 ## Bubble Sort
 - Bubbling Up Largest Value using Multiple Passthroughs
@@ -28,3 +28,27 @@
   - Continue until firstPos === listLength - 1
 - Time Complexity: O(n^2)
 - Space Complexity: O(1)
+
+# Insertion Sort
+- Useful for times when the list is already almost sorted
+- Good for Small Data Sets
+- Time Complexity B/W - O(n) / 
+- Procedure:
+  - iterate over the array, comparing element current index to previous elements:
+    - place current element before first element it is lower than, and shift later elements
+
+# Complex Sort Notes
+- Merge & Quick use Divide & Conquer
+- Use recursion to do work on subsets and combine the solutions
+- No nested for loops, O(n log n)
+  - every number needs to be compared atleast once (n)
+  - only local lists need to be compared with one another (log n)
+
+## Merge Sort
+- Procedure
+  - Recursively divide subsets into two parts until each subset contains one item
+  - Recursively Sort each group and combine in sorted order
+    - When combining, possibility of merging subsets if no additional sort needs be computed (i.e. [3, 4] can be merged with [5, 8] automatically)
+- Maintains original order for elements with the same value
+- Time Complexity: O(n log n)
+- Space Complexity: O(n)
