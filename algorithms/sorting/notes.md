@@ -20,3 +20,11 @@
   - Continue this process until reaching the lastSortedIndex (which is initialized as the index of the last element)
   - decrement the lastSortedIndex by 1 to ensure the algorithm doesn't repeatedly compare elements that are in the correct position from prev. passthrough
   - Repeat this procedure from the beginning of the array until lastSortedIndex = 0
+
+## Selection Sort
+- Procedure:
+  - Scan list of items for smallest element and swap with element in first pos
+  - After going through entire list, increment firstPos
+  - Continue until firstPos === listLength - 1
+- Time Complexity: O(n^2)
+- Space Complexity: O(1)
